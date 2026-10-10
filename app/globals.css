@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+/* ──────────────────────────────────────────────
+   Vertex Design System — Tailwind v4 Theme
+   ────────────────────────────────────────────── */
+
+@theme inline {
+  /* ── Fonts ── */
+  --font-display: var(--font-playfair);
+  --font-sans: var(--font-inter);
+
+  /* ── Primary palette ── */
+  --color-primary-100: #FFEEE5;
+  --color-primary-200: #FED7AA;
+  --color-primary-300: #FDBA74;
+  --color-primary-400: #FB923C;
+  --color-primary-500: #F97316;
+  --color-primary-600: #EA580C;
+
+  /* ── Neutral palette ── */
+  --color-neutral-50: #FAFAFC;
+  --color-neutral-100: #F1F5F9;
+  --color-neutral-200: #E2E8F0;
+  --color-neutral-300: #CBD5E1;
+  --color-neutral-500: #64748B;
+  --color-neutral-700: #334155;
+  --color-neutral-900: #0F172A;
+  --color-white: #FFFFFF;
+
+  /* ── Accent (badges) ── */
+  --color-indigo-50: #EEF0FE;
+  --color-indigo-600: #4F46E5;
+  --color-green-600: #16A34A;
+
+  /* ── Radius ── */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* ── Shadows ── */
+  --shadow-sm: 0 1px 2px 0 rgba(15, 23, 42, 0.05);
+  --shadow-md: 0 4px 12px -2px rgba(15, 23, 42, 0.08);
+  --shadow-lg: 0 12px 24px -4px rgba(15, 23, 42, 0.10);
+  --shadow-xl: 0 20px 40px -8px rgba(15, 23, 42, 0.12);
+}
+
+/* ──────────────────────────────────────────────
+   Type Scale Utilities
+   ────────────────────────────────────────────── */
+
+@utility text-display-1 {
+  font-family: var(--font-display);
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 700;
+}
+
+@utility text-display-2 {
+  font-family: var(--font-display);
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 700;
+}
+
+@utility text-heading-1 {
+  font-family: var(--font-sans);
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+}
+
+@utility text-heading-2 {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  line-height: 30px;
+  font-weight: 600;
+}
+
+@utility text-heading-3 {
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 500;
+}
+
+@utility text-body-lg {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+}
+
+@utility text-body {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+@utility text-small {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+}
+
+/* ──────────────────────────────────────────────
+   Base Styles
+   ────────────────────────────────────────────── */
+
+body {
+  background: var(--color-white);
+  color: var(--color-neutral-900);
+  font-family: var(--font-sans);
+}
