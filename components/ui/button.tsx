@@ -1,7 +1,8 @@
+import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
 type ButtonVariant = 'primary' | 'secondary' | 'tertiary' | 'text';
-type ButtonSize = 'lg' | 'md';
+type ButtonSize = 'xl' | 'lg' | 'md';
 
 interface ButtonBaseProps {
   variant?: ButtonVariant;
@@ -23,20 +24,21 @@ interface ButtonAsLink extends ButtonBaseProps {
   type?: never;
 }
 
-type ButtonProps = ButtonAsButton | ButtonAsLink;
+export type ButtonProps = ButtonAsButton | ButtonAsLink;
 
 const variantStyles: Record<ButtonVariant, string> = {
   primary:
-    'bg-primary-500 text-white hover:bg-primary-600 disabled:bg-primary-100 disabled:text-primary-300',
+    'bg-primary-500 text-white hover:bg-primary-600 disabled:bg-primary-100 disabled:text-primary-300 shadow-sm',
   secondary:
-    'border border-primary-500 text-primary-500 bg-white hover:bg-primary-100 disabled:border-primary-200 disabled:text-primary-200',
+    'border border-primary-500 text-primary-500 bg-white hover:bg-primary-100 disabled:border-primary-200 disabled:text-primary-200 dark:bg-neutral-900 dark:hover:bg-primary-950/40 dark:disabled:border-primary-900 dark:disabled:text-primary-800',
   tertiary:
-    'border border-neutral-200 text-neutral-900 bg-white hover:bg-neutral-50 disabled:text-neutral-300 disabled:border-neutral-100',
+    'border border-neutral-200 text-neutral-900 bg-white hover:bg-neutral-50 disabled:text-neutral-300 disabled:border-neutral-100 dark:border-neutral-800 dark:text-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 dark:disabled:text-neutral-600 dark:disabled:border-neutral-800',
   text:
-    'text-primary-500 hover:text-primary-600 disabled:text-primary-200',
+    'text-primary-500 hover:text-primary-600 disabled:text-primary-200 dark:text-primary-400 dark:hover:text-primary-300',
 };
 
 const sizeStyles: Record<ButtonSize, string> = {
+  xl: 'h-14 md:h-16 px-7 text-base md:text-[17px] font-medium',
   lg: 'h-[44px] px-4 text-body-lg',
   md: 'h-[44px] px-3 text-body',
 };
@@ -60,9 +62,13 @@ export function Button({
 
   if ('href' in props && props.href) {
     return (
-      <a href={props.href} className={cn(classes, disabled && 'pointer-events-none opacity-50')} aria-disabled={disabled || undefined}>
+      <Link
+        href={props.href}
+        className={cn(classes, disabled && 'pointer-events-none opacity-50')}
+        aria-disabled={disabled || undefined}
+      >
         {children}
-      </a>
+      </Link>
     );
   }
 
@@ -76,3 +82,5 @@ export function Button({
     </button>
   );
 }
+
+export const ButtonLink = Button;

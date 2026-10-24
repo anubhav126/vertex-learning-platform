@@ -1,5 +1,7 @@
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ──────────────────────────────────────────────
    Vertex Design System — Tailwind v4 Theme
    ────────────────────────────────────────────── */
@@ -26,6 +28,8 @@
   --color-neutral-700: #334155;
   --color-neutral-900: #0F172A;
   --color-white: #FFFFFF;
+  --color-canvas: #FBF8F5;
+  --color-canvas-line: #F0E7E0;
 
   /* ── Accent (badges) ── */
   --color-indigo-50: #EEF0FE;
@@ -111,8 +115,17 @@
    Base Styles
    ────────────────────────────────────────────── */
 
+html.dark {
+  color-scheme: dark;
+}
+
 body {
   background: var(--color-white);
   color: var(--color-neutral-900);
   font-family: var(--font-sans);
+}
+
+.dark body {
+  background: #0B0F17;
+  color: #F8FAFC;
 }

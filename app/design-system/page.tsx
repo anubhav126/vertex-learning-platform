@@ -23,6 +23,7 @@ import { Badge } from "@/components/ui/badge";
 import { StatusIndicator } from "@/components/ui/status-indicator";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import { SearchInput } from "@/components/ui/search-input";
+import { ThemeToggle } from "@/components/theme/theme-toggle";
 import { Select } from "@/components/ui/select";
 import { CourseCard } from "@/components/cards/course-card";
 import { LessonVideoCard } from "@/components/cards/lesson-video-card";
@@ -91,8 +92,9 @@ export default function DesignSystemPage() {
     <div className="mx-auto w-full max-w-[1200px] px-6 py-12">
       {/* ── Header ── */}
       <header className="mb-12">
-        <div className="flex items-center gap-3 mb-4">
+        <div className="flex items-center justify-between gap-3 mb-4">
           <Logo size="lg" />
+          <ThemeToggle />
         </div>
         <h1 className="text-display-1 text-neutral-900 mt-2">
           Design System
