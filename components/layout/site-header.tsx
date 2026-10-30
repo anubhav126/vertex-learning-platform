@@ -1,7 +1,8 @@
 import Link from 'next/link';
+import { Suspense } from 'react';
 import { Bell } from 'lucide-react';
+import { SignInButton, SignUpButton, Show, UserButton } from '@clerk/nextjs';
 import { Logo } from '@/components/brand/logo';
-import { Avatar } from '@/components/ui/avatar';
 import { ThemeToggle } from '@/components/theme/theme-toggle';
 import { cn } from '@/lib/utils';
 
@@ -56,14 +57,42 @@ export function SiteHeader({ className }: SiteHeaderProps) {
             <Bell size={20} aria-hidden="true" />
           </button>
 
-          {/* User profile avatar */}
-          <button
-            type="button"
-            aria-label="User profile"
-            className="rounded-full focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
+          {/* Auth Controls */}
+          <Suspense
+            fallback={
+              <div className="h-10 w-10 rounded-full bg-neutral-200 dark:bg-neutral-800 animate-pulse" />
+            }
           >
-            <Avatar size={44} initials="AL" alt="Alex Learner" />
-          </button>
+            <Show when="signed-out">
+              <div className="flex items-center gap-2">
+                <SignInButton mode="modal">
+                  <button
+                    type="button"
+                    className="inline-flex h-9 items-center justify-center rounded-md px-3 text-body font-medium text-neutral-800 transition-colors hover:text-primary-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500 dark:text-neutral-200 dark:hover:text-primary-400"
+                  >
+                    Sign In
+                  </button>
+                </SignInButton>
+                <SignUpButton mode="modal">
+                  <button
+                    type="button"
+                    className="inline-flex h-9 items-center justify-center rounded-md bg-primary-500 px-3.5 text-body font-medium text-white shadow-sm transition-colors hover:bg-primary-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary-500"
+                  >
+                    Sign Up
+                  </button>
+                </SignUpButton>
+              </div>
+            </Show>
+            <Show when="signed-in">
+              <UserButton
+                appearance={{
+                  elements: {
+                    userButtonAvatarBox: 'h-10 w-10 md:h-11 md:w-11',
+                  },
+                }}
+              />
+            </Show>
+          </Suspense>
         </div>
       </div>
     </header>
